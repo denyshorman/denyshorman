@@ -1,0 +1,14 @@
+{
+  "site": {
+    "id": "2d8b1e69-e03f-4332-9011-c4a9d3734d53",
+    "team": "30120b1e-3667-45ac-a514-9a642496bace",
+    "platform": "ipfs",
+    "source": "ipfs",
+    "name": "denyshorman"
+  },
+  "build": {
+    "baseDir": "dist",
+    "publicDir": "main",
+    "rootDir": ""
+  }
+}
