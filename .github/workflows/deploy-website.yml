@@ -11,12 +11,14 @@ jobs:
     environment:
       name: PROD
       url: https://denys.horman.tech
+    defaults:
+      run:
+        working-directory: ./website
     steps:
       - uses: actions/checkout@v3.0.2
         with:
           lfs: true
       - run: git lfs checkout
-      - run: cd website
       - uses: actions/setup-node@v3.1.1
       - run: npm install
       - run: npm run build
