@@ -1,4 +1,11 @@
 <div class="block">
   <h1 class="name">Denys Horman</h1>
   <h2 class="description">Software Engineer</h2>
+  <div class="social">
+    <ng-container *ngFor="let contact of contacts">
+      <a *ngIf="contact.enabled" [href]="contact.value" target="_blank">
+        <fa-icon [icon]="contact.icon" [title]="contact.name"></fa-icon>
+      </a>
+    </ng-container>
+  </div>
 </div>

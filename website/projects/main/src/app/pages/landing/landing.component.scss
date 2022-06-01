@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  row-gap: 1vh;
+  row-gap: 20px;
 }
 
 .name {
@@ -17,6 +17,7 @@
   text-transform: uppercase;
   cursor: default;
   user-select: none;
+  line-height: 85%;
 }
 
 .description {
@@ -30,4 +31,21 @@
   padding: 0.45em 0.5em;
   cursor: default;
   user-select: none;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6vw;
+}
+
+a {
+  color: #909090;
+  font-size: 1.5vw;
+
+  &:hover {
+    opacity: 1;
+    color: #4ae823;
+  }
 }
