@@ -4,10 +4,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, LandingComponent],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
+  imports: [
+    NgxGoogleAnalyticsModule.forRoot(environment.gaMeasurementId),
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
