@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "tech.horman.denys.api.grpc.pingpong";
+option java_outer_classname = "PingPongServiceProto";
+
+package api;
+
+import "google/protobuf/timestamp.proto";
+
+service PingPong {
+  rpc Ping (PingRequest) returns (PingReply) {}
+}
+
+message PingRequest {
+  google.protobuf.Timestamp time = 1;
+}
+
+message PingReply {
+  google.protobuf.Timestamp time = 1;
+}
