@@ -21,6 +21,7 @@ jobs:
       - run: git lfs checkout
       - uses: actions/setup-node@v3.1.1
       - run: npm install
+      - run: npm run compile-proto-files
       - run: npm run build
       - run: npm run minify-index
       - run: npm run single-bundle
