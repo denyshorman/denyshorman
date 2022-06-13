@@ -1,30 +1,30 @@
 package tech.horman.denys
 
-import io.grpc.ServerBuilder
-import mu.KotlinLogging
-import tech.horman.denys.api.grpc.PingPongService
-
 fun main() {
-    val logger = KotlinLogging.logger {}
     val grpcServerPort = System.getenv("GRPC_SERVER_PORT")?.toInt() ?: 50051
+    val grpcWebProxyServerPort = System.getenv("GRPC_WEB_PROXY_SERVER_PORT")?.toInt() ?: 8080
+    val grpcWebProxyServerPath = System.getenv("GRPC_WEB_PROXY_SERVER_PATH")
+        ?: throw Exception("Please define a path to gRPC Web proxy server executable")
 
-    val server = ServerBuilder
-        .forPort(grpcServerPort)
-        .addService(PingPongService())
-        .build()
+    val grpcServer = GrpcServer(grpcServerPort)
+
+    val grpcWebProxyServer = GrpcWebProxyServer(
+        proxyPath = grpcWebProxyServerPath,
+        proxyPort = grpcWebProxyServerPort,
+        grpcServerAddress = "127.0.0.1",
+        grpcServerPort = grpcServerPort,
+    )
 
     Runtime.getRuntime().addShutdownHook(
         Thread {
-            logger.info("Stopping gRPC server...")
-            server.shutdown()
-            server.awaitTermination()
-            logger.info("gRPC server has been stopped")
+            grpcWebProxyServer.stop()
+            grpcServer.stop()
         }
     )
 
-    server.start()
+    grpcServer.start()
+    grpcWebProxyServer.start()
 
-    logger.info("gRPC server has been started on port $grpcServerPort")
-
-    server.awaitTermination()
+    grpcWebProxyServer.awaitTermination()
+    grpcServer.awaitTermination()
 }
