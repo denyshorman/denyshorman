@@ -18,8 +18,8 @@ jobs:
       - run: git lfs checkout
       - run: chmod +x ./gradlew && ./gradlew shadowJar
       - run: |
-          wget "https://github.com/improbable-eng/grpc-web/releases/download/v0.15.0/grpcwebproxy-v0.15.0-linux-x86_64.zip" \
-          -O proxy.zip && \
+          wget -q -O proxy.zip \
+          "https://github.com/improbable-eng/grpc-web/releases/download/v0.15.0/grpcwebproxy-v0.15.0-linux-x86_64.zip" && \
           unzip proxy.zip && \
           rm proxy.zip && \
           mv dist/* build/libs/proxy
@@ -31,8 +31,7 @@ jobs:
       - uses: docker/setup-buildx-action@v2
       - uses: docker/build-push-action@v3
         with:
-          context: ./
-          file: ./Dockerfile
+          context: ./website/backend/api
           push: true
           builder: ${{ steps.buildx.outputs.name }}
           tags: ghcr.io/denyshorman/personal-website-api:latest
