@@ -27,18 +27,21 @@ const stylesCss = fs.readFileSync('dist/main/styles.css', {
 
 indexHtml = indexHtml.replace(
   `<script src=runtime.js type=module></script>`,
-  `<script type=module>${runtimeJs}</script>`,
+  () => `<script type=module>${runtimeJs}</script>`,
 );
 
 indexHtml = indexHtml.replace(
   `<script src=polyfills.js type=module></script>`,
-  `<script type=module>${polyfillsJs}</script>`,
+  () => `<script type=module>${polyfillsJs}</script>`,
 );
 
-indexHtml = indexHtml.replace(`<script src=main.js type=module></script>`, `<script type=module>${mainJs}</script>`);
+indexHtml = indexHtml.replace(
+  `<script src=main.js type=module></script>`,
+  () => `<script type=module>${mainJs}</script>`,
+);
 
 indexHtml = indexHtml
-  .replace(`<link href=styles.css rel=stylesheet>`, `<style>${stylesCss}</style>`)
+  .replace(`<link href=styles.css rel=stylesheet>`, () => `<style>${stylesCss}</style>`)
   .replace(/\r?\n|\r$/, '');
 
 fs.writeFileSync('dist/main/index.html', indexHtml);
