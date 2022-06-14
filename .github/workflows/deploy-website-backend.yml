@@ -6,7 +6,7 @@ on:
       - website-backend-release
 
 jobs:
-  build-and-push-docker-image:
+  build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -39,3 +39,14 @@ jobs:
           tags: ghcr.io/denyshorman/personal-website-api:latest
           cache-from: type=registry,ref=ghcr.io/denyshorman/personal-website-api:buildcache
           cache-to: type=registry,ref=ghcr.io/denyshorman/personal-website-api:buildcache,mode=max
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./website/backend/api
+    steps:
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: flyctl deploy --remote-only
