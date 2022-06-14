@@ -40,6 +40,7 @@ jobs:
           cache-from: type=registry,ref=ghcr.io/denyshorman/personal-website-api:buildcache
           cache-to: type=registry,ref=ghcr.io/denyshorman/personal-website-api:buildcache,mode=max
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     defaults:
       run:
