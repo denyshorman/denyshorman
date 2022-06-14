@@ -47,6 +47,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.23")
     implementation("io.grpc:grpc-netty:1.47.0")
     implementation("io.grpc:grpc-protobuf:1.47.0")
+    implementation("io.grpc:grpc-services:1.47.0")
     implementation("io.grpc:grpc-stub:1.47.0")
     implementation("io.grpc:grpc-kotlin-stub:1.3.0")
     implementation("com.google.protobuf:protobuf-java-util:3.21.1")

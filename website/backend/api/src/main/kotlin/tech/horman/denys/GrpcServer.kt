@@ -2,13 +2,15 @@ package tech.horman.denys
 
 import io.grpc.Server
 import io.grpc.ServerBuilder
+import io.grpc.protobuf.services.ProtoReflectionService
 import mu.KotlinLogging
 import tech.horman.denys.api.grpc.PingPongService
 
-class GrpcServer(private val port: Int = 50051) {
+class GrpcServer(port: Int = 50051) {
     private val server: Server = ServerBuilder
         .forPort(port)
         .addService(PingPongService())
+        .addService(ProtoReflectionService.newInstance())
         .build()
 
     fun start() {
