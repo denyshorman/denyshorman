@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "tech.horman.denys.api.grpc.networkutils";
+option java_outer_classname = "NetworkUtilsServiceProto";
+
+package api;
+
+import "google/protobuf/empty.proto";
+
+service NetworkUtils {
+  rpc GetMyIp (google.protobuf.Empty) returns (MyIpReply) {}
+}
+
+message MyIpReply {
+  bytes ip = 1;
+}

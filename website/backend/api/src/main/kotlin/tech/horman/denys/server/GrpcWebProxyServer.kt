@@ -59,6 +59,6 @@ class GrpcWebProxyServer(
     }
 
     companion object {
-        val logger = KotlinLogging.logger {}
+        private val logger = KotlinLogging.logger {}
     }
 }
