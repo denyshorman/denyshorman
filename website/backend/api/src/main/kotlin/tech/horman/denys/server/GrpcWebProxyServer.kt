@@ -1,4 +1,4 @@
-package tech.horman.denys
+package tech.horman.denys.server
 
 import mu.KotlinLogging
 

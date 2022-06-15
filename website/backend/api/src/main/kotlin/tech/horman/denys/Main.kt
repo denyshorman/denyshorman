@@ -1,5 +1,8 @@
 package tech.horman.denys
 
+import tech.horman.denys.server.GrpcServer
+import tech.horman.denys.server.GrpcWebProxyServer
+
 fun main() {
     val grpcServerPort = System.getenv("GRPC_SERVER_PORT")?.toInt() ?: 50051
     val grpcWebProxyServerPort = System.getenv("GRPC_WEB_PROXY_SERVER_PORT")?.toInt() ?: 8080
