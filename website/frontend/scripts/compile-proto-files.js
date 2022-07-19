@@ -11,16 +11,17 @@ const compileOutputPath = path.normalize(path.join(__dirname, '..', 'projects', 
 const protoFiles = fs
   .readdirSync(protoFilesPath)
   .filter(file => file.endsWith('.proto'))
-  .map(file => path.join(protoFilesPath, file))
-  .join(' ');
+  .map(file => path.join(protoFilesPath, file));
 
 if (!fs.existsSync(compileOutputPath)) {
   fs.mkdirSync(compileOutputPath);
 }
 
-process.execFileSync(path.join(nodeModulesBinPath, `grpc_tools_node_protoc${cmdExt}`), [
-  `--plugin=protoc-gen-ng=${path.join(nodeModulesBinPath, `protoc-gen-ng${cmdExt}`)}`,
-  `--ng_out=${compileOutputPath}`,
-  `--proto_path=${protoFilesPath}`,
-  protoFiles,
-]);
+for (const protoFile of protoFiles) {
+  process.execFileSync(path.join(nodeModulesBinPath, `grpc_tools_node_protoc${cmdExt}`), [
+    `--plugin=protoc-gen-ng=${path.join(nodeModulesBinPath, `protoc-gen-ng${cmdExt}`)}`,
+    `--ng_out=${compileOutputPath}`,
+    `--proto_path=${protoFilesPath}`,
+    protoFile,
+  ]);
+}
