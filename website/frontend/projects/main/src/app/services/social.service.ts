@@ -34,13 +34,13 @@ export class SocialService {
       icon: faTwitter,
     },
     {
-      name: 'Github',
+      name: 'GitHub',
       value: 'https://github.com/denyshorman',
       enabled: true,
       icon: faGithub,
     },
     {
-      name: 'Gitlab',
+      name: 'GitLab',
       value: 'https://gitlab.com/denyshorman',
       enabled: false,
       icon: faGitlab,
