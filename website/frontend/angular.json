@@ -3,7 +3,9 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -103,10 +105,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "main:build:production"
+              "buildTarget": "main:build:production"
             },
             "development": {
-              "browserTarget": "main:build:development"
+              "buildTarget": "main:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -114,7 +116,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "main:build"
+            "buildTarget": "main:build"
           }
         },
         "lint": {
@@ -125,6 +127,5 @@
         }
       }
     }
-  },
-  "defaultProject": "main"
+  }
 }

@@ -15,11 +15,11 @@ jobs:
       run:
         working-directory: ./website/frontend
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v4
         with:
           lfs: true
       - run: git lfs checkout
-      - uses: actions/setup-node@v3.1.1
+      - uses: actions/setup-node@v4
       - run: npm install
       - run: npm run compile-proto-files
       - run: npm run build
