@@ -1,9 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import com.google.protobuf.gradle.generateProtoTasks
 import com.google.protobuf.gradle.id
-import com.google.protobuf.gradle.plugins
-import com.google.protobuf.gradle.protobuf
-import com.google.protobuf.gradle.protoc
 import org.gradle.kotlin.dsl.application
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.implementation
@@ -22,14 +18,14 @@ version = "1.0.0"
 
 plugins {
     application
-    kotlin("jvm") version "1.7.0"
-    id("com.google.protobuf") version "0.8.18"
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    kotlin("jvm") version "1.9.23"
+    id("com.google.protobuf") version "0.9.4"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 kotlin {
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
@@ -42,18 +38,18 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
-    implementation("ch.qos.logback:logback-classic:1.2.11")
-    implementation("io.github.microutils:kotlin-logging-jvm:2.1.23")
-    implementation("io.grpc:grpc-netty:1.47.0")
-    implementation("io.grpc:grpc-protobuf:1.47.0")
-    implementation("io.grpc:grpc-services:1.47.0")
-    implementation("io.grpc:grpc-stub:1.47.0")
-    implementation("io.grpc:grpc-kotlin-stub:1.3.0")
-    implementation("com.google.protobuf:protobuf-java-util:3.21.1")
-    implementation("com.google.protobuf:protobuf-kotlin:3.21.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+    implementation("ch.qos.logback:logback-classic:1.5.3")
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
+    implementation("io.grpc:grpc-netty:1.62.2")
+    implementation("io.grpc:grpc-protobuf:1.62.2")
+    implementation("io.grpc:grpc-services:1.62.2")
+    implementation("io.grpc:grpc-stub:1.62.2")
+    implementation("io.grpc:grpc-kotlin-stub:1.4.1")
+    implementation("com.google.protobuf:protobuf-java-util:3.25.3")
+    implementation("com.google.protobuf:protobuf-kotlin:3.25.3")
 
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.7.0")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.9.22")
 }
 
 sourceSets {
@@ -69,24 +65,20 @@ tasks {
         archiveAppendix.set("")
         archiveVersion.set("")
         archiveClassifier.set("")
-
-        minimize {
-            exclude(dependency("io.grpc:grpc-netty:.*"))
-        }
     }
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.1"
+        artifact = "com.google.protobuf:protoc:3.25.3"
     }
 
     plugins {
         id("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.47.0"
+            artifact = "io.grpc:protoc-gen-grpc-java:1.62.2"
         }
         id("grpckt") {
-            artifact = "io.grpc:protoc-gen-grpc-kotlin:1.3.0:jdk8@jar"
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:1.4.1:jdk8@jar"
         }
     }
 
