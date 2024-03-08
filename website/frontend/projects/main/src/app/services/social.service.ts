@@ -4,7 +4,7 @@ import {
   faTelegram,
   faGithub,
   faGitlab,
-  faTwitter,
+  faXTwitter,
   faLinkedin,
   faSkype,
 } from '@fortawesome/free-brands-svg-icons';
@@ -28,10 +28,10 @@ export class SocialService {
       icon: faLinkedin,
     },
     {
-      name: 'Twitter',
-      value: 'https://twitter.com/denyshorman',
+      name: 'X',
+      value: 'https://x.com/denyshorman',
       enabled: true,
-      icon: faTwitter,
+      icon: faXTwitter,
     },
     {
       name: 'GitHub',
