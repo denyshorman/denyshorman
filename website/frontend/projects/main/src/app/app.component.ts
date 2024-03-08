@@ -3,7 +3,7 @@ import { PingPongService } from './services/ping-pong.service';
 
 @Component({
   selector: 'dh-root',
-  template: `<router-outlet></router-outlet>`,
+  template: `<dh-landing></dh-landing>`,
   styles: [],
 })
 export class AppComponent implements OnInit {

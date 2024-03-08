@@ -9,7 +9,7 @@ import { SocialService } from '../../services/social.service';
 export class LandingComponent {
   contacts: any;
 
-  constructor(private socialService: SocialService) {
+  constructor(socialService: SocialService) {
     this.contacts = socialService.contacts;
   }
 }
