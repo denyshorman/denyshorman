@@ -1,1 +1,1 @@
-![](http://hit.apps.denys.horman.tech)
+![](https://api.denys.horman.tech/files/github.png)
